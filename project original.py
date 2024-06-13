@@ -83,6 +83,7 @@ def read_excel_into_mysql():
         
         create table {genre_table} (
             movie_id int,
+            foreign key (movie_id) references {movie_table}(id),
             genre varchar(100)
         );
         
@@ -93,7 +94,9 @@ def read_excel_into_mysql():
         
         create table {movie_director_table} (
             movie_id int,
-            director_id int
+            director_id int,
+            foreign key (movie_id) references {movie_table}(id),
+            foreign key (director_id) references {director_table}(id)
         );
         
         create index idx_movie_id on {genre_table}(movie_id);
